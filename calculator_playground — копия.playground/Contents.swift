@@ -18,6 +18,19 @@ enum Associativity {
     case right
 }
 
+struct AnyCalculator<T> {
+    typealias Number = Int
+    init(operators: Dictionary<String, Operator<Int>>) {
+        fatalError("TODO: Implement")
+    }
+    func evaluate(_ input: String) throws -> Int {
+        fatalError("TODO: Implement")
+    }
+}
+
+typealias IntegerCalculator = AnyCalculator<Int>
+typealias RealCalculator = AnyCalculator<Double>
+
 func test(calculator type: (some Calculator<Int>).Type) {
     let calculator = type.init(operators: [
         "+": Operator(precedence: 10, associativity: .left, function: +),
