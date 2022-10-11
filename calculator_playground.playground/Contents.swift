@@ -20,16 +20,26 @@ enum Associativity {
 
 struct AnyCalculator<T> {
     typealias Number = Int
+    
     init(operators: Dictionary<String, Operator<Int>>) {
         fatalError("TODO: Implement")
     }
+    
     func evaluate(_ input: String) throws -> Int {
         fatalError("TODO: Implement")
+        
     }
+    
+    let dictionaryOfSign = [" + ": function: a + b, " - ": a - b, " * ": a * b, " / ": a / b]
+    for i in dicti
 }
 
 typealias IntegerCalculator = AnyCalculator<Int>
 typealias RealCalculator = AnyCalculator<Double>
+
+enum CalcErrors: Error {
+    case conversionFailed(String)
+}
 
 func test(calculator type: (some Calculator<Int>).Type) {
     let calculator = type.init(operators: [
